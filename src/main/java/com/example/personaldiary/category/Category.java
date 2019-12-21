@@ -1,8 +1,12 @@
 package com.example.personaldiary.category;
 
+import com.example.personaldiary.user.User;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Category {
@@ -10,14 +14,20 @@ public class Category {
     @GeneratedValue
     private Long id;
     private String title;
+    private Boolean isDefault;
+
+    @ManyToOne
+    private User user;
 
     public Category() {
         super();
     }
 
-    public Category(Long id, String title) {
+    public Category(Long id, String title, Boolean isDefault) {
+        super();
         this.id = id;
         this.title = title;
+        this.isDefault = isDefault;
     }
 
     public Long getId() {
@@ -34,5 +44,21 @@ public class Category {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Boolean getIsDefault() {
+        return isDefault;
+    }
+
+    public void setIsDefault(Boolean isDefault) {
+        this.isDefault = isDefault;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
