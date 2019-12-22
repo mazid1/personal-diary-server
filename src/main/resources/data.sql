@@ -1,7 +1,7 @@
-insert into user (id, username, password) values (10001, 'user1', 'password1'),
-                                                 (10002, 'user2', 'password2'),
-                                                 (10003, 'user3', 'password3'),
-                                                 (10004, 'user4', 'password4');
+insert into user (id, username, password) values (10001, 'user1', 'p1'),
+                                                 (10002, 'user2', 'p2'),
+                                                 (10003, 'user3', 'p3'),
+                                                 (10004, 'user4', 'p4');
 
 insert into category (id, title, is_default) values (20001, 'Home', true),
                                                     (20002, 'Work', true),

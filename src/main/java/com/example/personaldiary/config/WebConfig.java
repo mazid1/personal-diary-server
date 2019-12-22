@@ -1,5 +1,6 @@
 package com.example.personaldiary.config;
 
+import com.example.personaldiary.util.JwtUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -18,5 +19,10 @@ public class WebConfig {
                         .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
             }
         };
+    }
+
+    @Bean
+    public JwtUtil jwtUtilBean() {
+        return new JwtUtil();
     }
 }
