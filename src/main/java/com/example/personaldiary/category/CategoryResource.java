@@ -19,12 +19,12 @@ public class CategoryResource {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @GetMapping("/categories")
+    @GetMapping("/api/categories")
     public List<Category> getCategories() {
         return categoryRepository.findAll();
     }
 
-    @GetMapping("/category/{id}")
+    @GetMapping("/api/category/{id}")
     public Category getCategoryById(@PathVariable long id) {
         Optional<Category> category = categoryRepository.findById(id);
 
@@ -35,7 +35,7 @@ public class CategoryResource {
         return category.get();
     }
 
-    @DeleteMapping("/category/{id}")
+    @DeleteMapping("/api/category/{id}")
     public void deleteCategoryById(@PathVariable long id) {
         Optional<Category> category = categoryRepository.findById(id);
 
@@ -46,7 +46,7 @@ public class CategoryResource {
         categoryRepository.delete(category.get());
     }
 
-    @PostMapping("/category")
+    @PostMapping("/api/category")
     public ResponseEntity<Object> createCategory(@RequestBody Category category) {
         Category savedCategory = categoryRepository.save(category);
 
@@ -56,7 +56,7 @@ public class CategoryResource {
         return ResponseEntity.created(location).build();
     }
 
-    @PutMapping("/category/{id}")
+    @PutMapping("/api/category/{id}")
     public ResponseEntity<Object> updateCategory(@RequestBody Category category, @PathVariable long id) {
         Optional<Category> categoryOptional = categoryRepository.findById(id);
 
