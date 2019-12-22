@@ -1,13 +1,21 @@
 package com.example.personaldiary.auth;
 
-public class AuthenticationResponse {
-    private final String jwt;
+import org.springframework.security.core.userdetails.UserDetails;
 
-    public AuthenticationResponse(String jwt) {
-        this.jwt = jwt;
+public class AuthenticationResponse {
+    private final String token;
+    private final String username;
+
+    public AuthenticationResponse(String token, UserDetails userDetails) {
+        this.token = token;
+        this.username = userDetails.getUsername();
     }
 
-    public String getJwt() {
-        return jwt;
+    public String getToken() {
+        return token;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }
