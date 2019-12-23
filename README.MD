@@ -16,4 +16,4 @@ Several users are already added into database for testing. Username and password
 
 ## Known Issues
 
-Signup (Crete new user) feature does not work yet. 
+Signup (Create new user) feature does not work yet. 
