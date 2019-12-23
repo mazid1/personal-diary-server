@@ -3,11 +3,14 @@ package com.example.personaldiary.category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +22,14 @@ public class CategoryResource {
 
     @GetMapping("/api/categories")
     public List<Category> getCategories() {
-        return categoryRepository.findAll();
+        UserDetails ud = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        List<Category> defaultCategories = categoryRepository.getDefaultCategory();
+        List<Category> userCategories = categoryRepository.getCategoryByUser(ud.getUsername());
+        List<Category> allCategories = new ArrayList<>(defaultCategories);
+        allCategories.addAll(userCategories);
+
+        return allCategories;
     }
 
     @GetMapping("/api/category/{id}")
