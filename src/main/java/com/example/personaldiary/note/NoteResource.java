@@ -17,6 +17,7 @@ import java.net.URI;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 public class NoteResource {
@@ -35,6 +36,13 @@ public class NoteResource {
         UserDetails ud = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Note> userNotes = noteRepository.getNotesByUser(ud.getUsername());
         return userNotes;
+    }
+
+    @GetMapping("/api/notes/category/{id}")
+    public List<Note> getAllNotesByCategory(@PathVariable long id) {
+        List<Note> userNotes = getAllNotes();
+        List<Note> filteredNotes = userNotes.stream().filter(note -> note.getCategory().getId()==id).collect(Collectors.toList());
+        return filteredNotes;
     }
 
     @GetMapping("/api/note/{id}")
