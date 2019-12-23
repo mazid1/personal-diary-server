@@ -1,6 +1,7 @@
 package com.example.personaldiary.note;
 
 import com.example.personaldiary.category.Category;
+import com.example.personaldiary.user.User;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,19 +21,21 @@ public class Note {
     @ManyToOne
     private Category category;
 
-//    @ManyToOne
-//    private User createdBy;
+    @ManyToOne
+    private User user;
 
     public Note() {
         super();
     }
 
-    public Note(Long id, String title, String description, Date date) {
+    public Note(Long id, String title, String description, Date date, Category category, User user) {
         super();
         this.id = id;
         this.title = title;
         this.description = description;
         this.date = date;
+        this.category = category;
+        this.user = user;
     }
 
     public Long getId() {
@@ -73,5 +76,13 @@ public class Note {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -10,8 +10,8 @@ insert into category (id, title, is_default) values (20001, 'Home', true),
 insert into category (id, title, is_default, user_id) values (20022, 'Custom2', false, 10002);
 insert into category (id, title, is_default, user_id) values (20023, 'Custom3', false, 10003);
 
-insert into note (id, title, description, date, category_id) values (30001, 'Coding', 'Writing java codes after a long break!', '2019-07-08T09:10:56Z', 20001),
-                                                                    (30002, 'Song', 'Hearing some Japanese song.', '2019-07-08T09:10:56Z', 20001),
-                                                                    (30003, 'Dinner Cost', 'OMG! I have expend too much money today for dinner!', '2019-07-08T09:10:56Z', 20003),
-                                                                    (30004, 'Random', 'This is some random text. It should be in other category.', '2019-07-08T09:10:56Z', 20004);
+insert into note (id, title, description, date, category_id, user_id) values (30001, 'Coding', 'Writing java codes after a long break!', '2019-07-08T09:10:56Z', 20001, 10002),
+                                                                    (30002, 'Song', 'Hearing some Japanese song.', '2019-07-08T09:10:56Z', 20001, 10002),
+                                                                    (30003, 'Dinner Cost', 'OMG! I have expend too much money today for dinner!', '2019-07-08T09:10:56Z', 20003, 10003),
+                                                                    (30004, 'Random', 'This is some random text. It should be in other category.', '2019-07-08T09:10:56Z', 20004, 10001);
 
